@@ -1,0 +1,462 @@
+/* Add CSS stylesheet */
+.header {
+  /* These are just the default CSS properties for h1 header tags */
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+/* https://www.reddit.com/r/css/comments/1bg70le/whats_the_best_all_round_font_to_use_for_a_website/ */
+* {
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.subtitle {
+  font-size: large;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+}
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+/* Zaber */
+.banner {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  outline: 2px solid black;
+  margin: 0px;
+}
+.icon {
+  font-size: 2.3rem;
+  color: #ff5700;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.search {
+  margin: auto;
+  text-align: center;
+  border-radius: 10px;
+  width: 50%;
+  padding: 10px;
+  border: solid grey;
+  background-color: lightgrey;
+  font-size: large;
+}
+.search::placeholder {
+  color: rgb(51, 46, 46);
+  font: bold;
+}
+.createpost {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: rgb(173, 173, 173);
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+  font: bolder;
+}
+.createpost:hover {
+  background-color: #ff5700;
+}
+
+/* Zaber HomePage */
+.body {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.container {
+  width: 100%;
+}
+.homepage {
+  align-items: center;
+  width: 100%;
+}
+.bannerhomepage {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+  /* padding: top right bottom left */
+  outline: 2px solid black;
+  justify-content: space-between;
+  /* copied .banner */
+}
+.sort {
+  padding: 10px 20px;
+  font-size: small;
+  background-color: rgb(173, 173, 173);
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+  font: bolder;
+}
+.postcount {
+  padding: 10px;
+  font-size: 1.2em;
+  color: black;
+  font-weight: bolder;
+}
+
+.post {
+  padding: 10px 30px 10px 30px;
+  border: black thin dotted;
+}
+/* added padding to the stuff inside post */
+.post > * {
+  padding: 2px;
+}
+.postinfo {
+  color: grey;
+}
+.posttitle {
+  color: #ff4500;
+  font-size: x-large;
+  font-weight: bolder;
+}
+.linkflair {
+  color: grey;
+  font-size: small;
+}
+.postcontent {
+  font-size: large;
+}
+.postbottom {
+  font-size: small;
+  color: grey;
+}
+
+/* search */
+.searchresult {
+  align-items: center;
+  width: 100%;
+}
+.bannersearch {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+  /* padding: top right bottom left */
+  outline: 2px solid black;
+  justify-content: space-between;
+  /* copied .banner */
+}
+
+/* create Post Page */
+.posticon {
+  padding: 10px;
+}
+.postform {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.postform label {
+  font-weight: bold;
+}
+.postform input,
+.postform textarea,
+.postform select {
+  padding: 10px;
+  font-size: 1.2em;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80%;
+}
+.postform button {
+  background-color: grey;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: large;
+  padding: 15px;
+  margin-top: 10px;
+}
+.postform button:hover,
+.postform button:focus {
+  background-color: #ff4500;
+}
+#communityselect {
+  width: 20%;
+}
+#flairselect {
+  width: 20%;
+}
+#username {
+  width: 65%;
+}
+#posttitle {
+  width: 65%;
+}
+#customflair {
+  width: 65%;
+}
+#postcontent {
+  width: 65%;
+}
+
+/* new comment page */
+.commenticon {
+  padding: 10px;
+  font-size: x-large;
+  font-weight: bold;
+  color: #ff4500;
+}
+
+.commentform {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.commentform label {
+  font-weight: bold;
+}
+
+.commentform input,
+.commentform textarea {
+  padding: 10px;
+  font-size: 1.2em;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 65%;
+}
+
+.commentform button {
+  background-color: grey;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: large;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.commentform button:hover,
+.commentform button:focus {
+  background-color: #ff4500;
+}
+
+#commentcontent {
+  width: 65%;
+  height: 150px;
+  resize: vertical;
+}
+
+#commentusername {
+  width: 65%;
+}
+.container {
+  overflow-y: auto;
+  padding-bottom: 20vh;
+}
+
+/* Ian */
+.navbar {
+  position: flex;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.nav-link {
+  color: black;
+  width: 140px;
+  background-color: lightgrey;
+  padding: 5px 10px;
+  text-decoration: none;
+  order: 1;
+  margin-bottom: 10px;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  background-color: #ff4500;
+}
+
+.delimiter {
+  width: 160px;
+  background-color: black;
+  padding: 1px;
+  margin-bottom: 10px;
+  order: 2;
+}
+
+.delimiter2 {
+  position: absolute;
+  height: 1400px;
+  margin-top: -10px;
+  background-color: black;
+  padding: 1px;
+  margin-left: 170px;
+}
+
+.create-community-btn {
+  background-color: grey;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 15px 10px;
+  order: 3;
+}
+
+.create-community-btn:hover,
+.create-community-btn:focus {
+  background-color: #ff4500;
+}
+
+.communities-header {
+  order: 4;
+}
+
+.communities-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  order: 5;
+}
+
+.communities-list li {
+  display: block;
+}
+
+.community-link {
+  text-decoration: none;
+  margin-right: 10px;
+  padding: 5px;
+  color: black;
+}
+
+.create-community-view form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 1100px;
+  margin: 40px;
+}
+
+.create-community-view input,
+.create-community-view textarea {
+  padding: 10px;
+  font-size: 1.2em;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.create-community-view label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.community-view {
+  margin-top: -40px;
+  padding: 20px;
+}
+
+.community-title,
+.community-name {
+  display: flex;
+  margin-bottom: -30px;
+  color: #ff4500;
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.community-description {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.community-timestamp {
+  display: block;
+  margin-top: -10px;
+  font-size: 0.9em;
+}
+
+.community-stats {
+  display: flex;
+  gap: 5px;
+  font-size: small;
+  margin-top: 10px;
+}
+
+.community-page {
+  padding-left: 20px;
+}
+.community-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid black;
+}
+
+.sortbuttons {
+  display: flex;
+  margin-top: -50px;
+  margin-left: auto;
+}
+
+.post-page-topline .community-name {
+  margin-bottom: 20px;
+}
+
+.post-page-stats {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: grey;
+}
+
+.post-page-username {
+  margin-top: -40px;
+}
+
+.comment-item {
+  margin-left: 3em !important;
+}
+
+.reply-btn {
+  color: blue;
+  background: none;
+  border: none;
+}
+
+.reply-btn:focus,
+.reply-btn:hover {
+  outline: none;
+}
+
+.post-page {
+  margin-left: 15px;
+}
+
+.comment-username,
+.comment-date {
+  color: grey;
+  font-size: 0.85em;
+}
+
+.reply-wrapper {
+  border-left: 2px solid lightgrey;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
