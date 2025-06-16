@@ -1,0 +1,125 @@
+const express = require("express");
+const router = express.Router();
+const Community = require("../models/communities");
+const Post     = require("../models/posts");
+const Comment  = require("../models/comments");
+
+router.post("/", async (req, res) => {
+  try {
+    const { name, description, members = [], createdBy } = req.body;
+    let creatorId = createdBy;
+    if (createdBy && typeof createdBy === "object" && createdBy.username) {
+      const user = await User.findOne({ username: createdBy.username }).select("_id");
+      if (!user) return res.status(404).json({ error: "User not found" });
+      creatorId = user._id;
+    }
+
+    const newCommunity = await Community.create({
+      name,
+      description,
+      members,
+      createdBy: creatorId
+    });
+
+    const populated = await newCommunity.populate("createdBy", "username");
+    res.json(populated);
+  } catch (err) {
+    console.error("Error creating community:", err.message);
+    res.status(400).json({ error: err.message });
+  }
+});
+
+router.post("/:communityID/join", async (req, res) => {
+  console.log(
+    ">>> JOIN route hit  – id:",
+    req.params.communityID,
+    "body:",
+    req.body
+  );
+  try {
+    const { username } = req.body;
+    const updated = await Community.findByIdAndUpdate(
+      req.params.communityID,
+      { $addToSet: { members: username } },
+      { new: true }
+    );
+    res.json(updated);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+router.post("/:communityID/leave", async (req, res) => {
+  try {
+    const { username } = req.body;
+    const updated = await Community.findByIdAndUpdate(
+      req.params.communityID,
+      { $pull: { members: username } },
+      { new: true }
+    );
+    res.json(updated);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+router.post("/:communityID/addPost", async (req, res) => {
+  try {
+    const { communityID } = req.params;
+    const { postID } = req.body;
+    if (!postID) {
+      return res.status(400).json({ error: "Post ID is required" });
+    }
+    const updatedCommunity = await Community.findByIdAndUpdate(
+      communityID,
+      { $push: { postIDs: postID } },
+      { new: true }
+    );
+    if (!updatedCommunity) {
+      return res.status(404).json({ error: "Community not found" });
+    }
+
+    res.json(updatedCommunity);
+  } catch (err) {
+    console.error("Error adding postID to community:", err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const allCommunities = await Community.find()
+      .populate("createdBy", "username")
+      .exec();
+    res.json(allCommunities);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+router.delete("/:id", async (req, res, next) => {
+  try {
+
+    const community = await Community.findById(req.params.id);
+    if (!community)
+      return res.status(404).json({ error: "Community not found" });
+
+    let postIds = community.postIDs;
+    if (!postIds.length) 
+      {
+      postIds = (await Post.find({ communityID: community._id })
+                       .select("_id")).map(p => p._id);
+    }
+
+    await Promise.all([
+      Comment.deleteMany({ postID: { $in: postIds } }),
+      Post.deleteMany({ _id: { $in: postIds } }),      
+      community.deleteOne(),                            
+    ]);
+
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+});
+
+module.exports = router;

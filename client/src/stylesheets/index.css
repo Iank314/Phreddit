@@ -61,7 +61,7 @@ body {
 .createpost {
   padding: 10px 20px;
   font-size: 1em;
-  background-color: rgb(173, 173, 173);
+  background-color: lightgrey;
   border-radius: 10px;
   color: rgb(0, 0, 0);
   font: bolder;
@@ -69,15 +69,35 @@ body {
 .createpost:hover {
   background-color: #ff5700;
 }
-
+.logoutbtn {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: lightgrey;
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+  font: bolder;
+}
+.profilebtn {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: lightgrey;
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+  font: bolder;
+}
+.logoutbtn:hover {
+  background-color: #ff5700;
+}
 /* Zaber HomePage */
 .body {
   display: flex;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 .container {
   width: 100%;
+  overflow-y: auto;
+  padding-bottom: 10vh;
 }
 .homepage {
   align-items: center;
@@ -103,11 +123,17 @@ body {
 }
 .postcount {
   padding: 10px;
-  font-size: 1.2em;
+  margin: 0;
+  font-size: 1.5em;
   color: black;
   font-weight: bolder;
 }
-
+#homepageicon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
 .post {
   padding: 10px 30px 10px 30px;
   border: black thin dotted;
@@ -150,6 +176,12 @@ body {
   outline: 2px solid black;
   justify-content: space-between;
   /* copied .banner */
+}
+.comseparator {
+  font-weight: bold;
+  padding: 4px;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 /* create Post Page */
@@ -207,7 +239,6 @@ body {
   width: 65%;
 }
 
-/* new comment page */
 .commenticon {
   padding: 10px;
   font-size: x-large;
@@ -263,6 +294,302 @@ body {
 .container {
   overflow-y: auto;
   padding-bottom: 20vh;
+}
+
+/* Welcome Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+.welcomebox {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 80%;
+}
+.welcomebtns button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  width: 80%;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #ff5700;
+  color: white;
+}
+#guestBtn {
+  background: none;
+  color: blue;
+}
+
+/* SIGNUP OVERLAY */
+.signupform {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.loginform {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.signupnames {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.signupnames input {
+  flex: 1;
+  min-width: 120px;
+}
+
+.signupform input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.loginform input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.signupsubmit {
+  background-color: #ff5700;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.loginsubmit {
+  background-color: #ff5700;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.signupsubmit:hover {
+  background-color: #e44b00;
+}
+.signupheader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.signupback {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+}
+.loginback {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: #555;
+  text-decoration: underline;
+}
+.signupback {
+  background-color: transparent;
+  color: #555;
+  text-decoration: underline;
+}
+.signupback:hover {
+  color: #333;
+}
+
+/* User profile page */
+.profilepage {
+  padding: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.profilepage h2 {
+  font-size: 2em;
+  color: #ff4500;
+  margin-bottom: 10px;
+}
+
+.profilepage p {
+  margin: 4px 0;
+  font-size: 1em;
+  color: #333;
+}
+
+.profile-tabs {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.profile-tabs button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: lightgrey;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.profile-tabs button.active,
+.profile-tabs button:hover {
+  background-color: #ff5700;
+  color: white;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.profile-row {
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+.profile-link {
+  font-weight: bold;
+  color: #ff4500;
+  cursor: pointer;
+}
+
+.profile-link:hover {
+  text-decoration: underline;
+}
+
+.profile-row button {
+  padding: 6px 12px;
+  font-size: 0.9em;
+  background-color: grey;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.profile-row button:hover {
+  background-color: #ff4500;
+}
+
+/* edit stuff */
+.edit-pane,
+.create-community-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px auto;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 90%;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.edit-pane h2,
+.create-community-view h2 {
+  color: #ff4500;
+  font-size: 2em;
+  margin-bottom: 1.5rem;
+}
+.edit-pane form,
+.create-community-view form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.edit-pane label,
+.create-community-view label {
+  font-weight: bold;
+}
+.edit-pane input,
+.edit-pane textarea,
+.create-community-view input,
+.create-community-view textarea {
+  padding: 10px;
+  font-size: 1.2em;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.edit-pane button,
+.create-community-view button {
+  background-color: grey;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: large;
+  padding: 15px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.edit-pane button:hover,
+.create-community-view button:hover {
+  background-color: #ff4500;
+}
+.edit-pane button[type="button"],
+.create-community-view button[type="button"] {
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.edit-pane button[type="button"]:hover,
+.create-community-view button[type="button"]:hover {
+  background-color: #eee;
 }
 
 /* Ian */
@@ -412,7 +739,6 @@ body {
 
 .sortbuttons {
   display: flex;
-  margin-top: -50px;
   margin-left: auto;
 }
 
@@ -459,4 +785,26 @@ body {
   border-left: 2px solid lightgrey;
   padding-left: 10px;
   margin-bottom: 10px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: #0007;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-body {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 280px;
+}
+.modal-actions button {
+  padding: 4px 10px;
+}
+
+body.modal‑open {
+  overflow: hidden;
 }
